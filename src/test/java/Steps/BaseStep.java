@@ -30,7 +30,7 @@ public class BaseStep {
 
     @Step("Открытие ссылки")
     public void openLink(){
-        Configuration.browser = "firefox";
+        //Configuration.browser = "firefox";
         open("http://base.consultant.ru/cons/");
     }
 

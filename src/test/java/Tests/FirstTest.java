@@ -14,14 +14,13 @@ public class FirstTest {
     @Story("первый тест")//типа папка
     @DisplayName("Самый первый тест")//название
     @Test
-    public void testFirstTest(){
+    public static void testFirstTest(){
 
         BasePageSteps objBPS = new BasePageSteps();
         objBPS.openLink();
         objBPS.checkAllPageAppear();
         objBPS.inputTextInSearchBpx("нк ч2");
         objBPS.clickButtonSearch();
-
 
     }
 }
