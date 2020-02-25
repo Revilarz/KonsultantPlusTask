@@ -1,0 +1,27 @@
+1.При попытке первого запуска может вылететь следующая ошибка:
+"Error:java: error: release version 5 not supported"
+В настройках IDEA следует в настройках компилятора указать Java-версию 11+.
+
+2.При втором запуске возникла ошибка:
+Error:java: Source option 5 is no longer supported. Use 6 or later.
+Которая решилась после добавления блока в pom.xml:
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+3.Была проблема кодировки при передаче кирилицы, например в методе inputTextInSearchBox, на вебе отображался нечитабельный текст
+проблема решилась добавлением блока:
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+</properties>
+в pom.xml.
+
+4.Долго разбирался с Allure. Давно его с 0 не прикручивал, было много различных ошибок после добавления различных
+плагинов и dependencies, в итоге помогло то что сейчас в pom (взято из своего рабочего проекта)
