@@ -16,6 +16,18 @@ public class BaseStep {
         return Integer.parseInt(dateFormat.format(date));
     }
 
+    public static int getMinutes() {
+        DateFormat dateFormat = new SimpleDateFormat("mm");
+        Date date = new Date();
+        return Integer.parseInt(dateFormat.format(date));
+    }
+
+    public static int getHours() {
+        DateFormat dateFormat = new SimpleDateFormat("HH");
+        Date date = new Date();
+        return Integer.parseInt(dateFormat.format(date));
+    }
+
     @Step("Открытие ссылки")
     public void openLink(){
         Configuration.browser = "firefox";
