@@ -66,6 +66,9 @@ public class DocumentEditPage {
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_C);
 
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_C);
+
         //залипала Ctrl
         robot.keyRelease(KeyEvent.VK_CONTROL);
 
@@ -157,6 +160,19 @@ public class DocumentEditPage {
      */
     public void clickPrint() {
         $(byClassName("print")).click();
+    }
+
+    public void switchOnPrintWindow() {
+        switch (GetProperties.getPropertiesByText("browser")) {
+            case "chrome":
+                $(byId("")).click();
+                break;
+            case "firefox":
+                System.out.println("В FireFox нет возможности предпросмотра перед печатью");
+                break;
+            default:
+                System.out.println("Другие браузеры не рассматривались");
+        }
     }
 
     public void clickRedaction() {

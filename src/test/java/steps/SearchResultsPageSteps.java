@@ -7,7 +7,7 @@ public class SearchResultsPageSteps {
     private SearchResultPage objSRP = new SearchResultPage();
 
     @Step("Нажатие на первый элмент результатов поиска")
-    public void clickFirstRow(){
+    public void clickFirstRow() {
         objSRP = new SearchResultPage();
         objSRP.clickFirstRow();
     }

@@ -12,7 +12,8 @@ import org.junit.runners.Suite;
         FourthTest.class,
         FifthTest.class,
         SixthText.class,
-        SeventhTest.class
+        SeventhTest.class,
+        EighthTest.class
 })
 public class SuitForTest {
 

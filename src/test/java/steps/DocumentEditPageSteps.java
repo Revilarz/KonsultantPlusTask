@@ -72,7 +72,7 @@ public class DocumentEditPageSteps {
     }
 
     @Step("Нажатие на первый искомый результат")
-    public void clickOnHeader(){
+    public void clickOnHeader() {
         objDEP = new DocumentEditPage();
         objDEP.clickOnHeader();
     }
@@ -89,5 +89,10 @@ public class DocumentEditPageSteps {
         objDEP.clickPrint();
     }
 
+    @Step("Переключение не окно печати")
+    public void switchOnPrintWindow() {
+        objDEP = new DocumentEditPage();
+        objDEP.switchOnPrintWindow();
+    }
 
 }
