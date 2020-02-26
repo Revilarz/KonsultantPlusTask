@@ -25,3 +25,13 @@ Error:java: Source option 5 is no longer supported. Use 6 or later.
 
 4.Долго разбирался с Allure. Давно его с 0 не прикручивал, было много различных ошибок после добавления различных
 плагинов и dependencies, в итоге помогло то что сейчас в pom (взято из своего рабочего проекта)
+
+5.Была проблема:
+org.openqa.selenium.SessionNotCreatedException: session not created: This version of ChromeDriver only supports Chrome version 81
+(хоятя 81 версия только бета или типа того, оффициальная версия 80)
+данную проблему решил путем добавления в pom.xml:
+<dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.6.0</version>
+</dependency>

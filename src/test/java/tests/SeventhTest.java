@@ -18,7 +18,7 @@ public class SeventhTest {
     @Test
     public void testSeventhTest() throws UnsupportedFlavorException, IOException {
         DocumentEditPageSteps objDEPS = new DocumentEditPageSteps();
-        objDEPS.switchToFrame1();
+        objDEPS.switchToFrame();
         objDEPS.selectText();
         objDEPS.clickPrint();
 

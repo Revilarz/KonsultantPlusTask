@@ -26,6 +26,7 @@ public class DocumentEditPage {
     public void focusOnSecondWindow() {
         switchTo().window(1);
         switchTo().defaultContent();
+
     }
 
     /**
@@ -40,8 +41,8 @@ public class DocumentEditPage {
     /**
      * проверка что время прогрузки меньше 10 сек
      */
-    public void checkTimeLess10Seconds() {
-        System.out.println("result = " + (finishTime - SearchResultPage.startTime));
+    public void checkTimeLessNSeconds() {
+        //System.out.println("result = " + (finishTime - SearchResultPage.startTime));
         Assert.assertTrue(finishTime - SearchResultPage.startTime < Integer.parseInt(GetProperties.getPropertiesByText("timeout")));
     }
 
@@ -86,8 +87,18 @@ public class DocumentEditPage {
     /**
      * переключение на фрейм
      */
-    public void switchToFrame1() {
-        switchTo().frame(1);
+    public void switchToFrame() {
+        switch (GetProperties.getPropertiesByText("browser")) {
+            case "firefox":
+                switchTo().frame(1);
+                break;
+            case "chrome":
+                switchTo().frame(2);
+                break;
+            default:
+                switchTo().defaultContent();
+        }
+
     }
 
     /**
@@ -146,7 +157,7 @@ public class DocumentEditPage {
             text1 = (String) systemClipboard.getData(dataFlavor);
         }
 
-        System.out.println(text1);
+        //System.out.println(text1);
         //можно через координаты но мой метод быстрее пока dragAndDropTo работает криво)
         /*System.out.println("Коордтинаты 1563 - "+$(byId("p1563")).getLocation());
         System.out.println("Коордтинаты 1566 - "+$(byId("p1566")).getLocation());
@@ -159,13 +170,19 @@ public class DocumentEditPage {
      * нажатие на кнопку печати
      */
     public void clickPrint() {
-        $(byClassName("print")).click();
+        switch (GetProperties.getPropertiesByText("browser")) {
+            case "chrome":
+                $(byClassName("print")).click();
+                break;
+        }
     }
 
     public void switchOnPrintWindow() {
         switch (GetProperties.getPropertiesByText("browser")) {
             case "chrome":
-                $(byId("")).click();
+                switchTo().window(2);
+                $(byId("plugin")).doubleClick();
+                System.out.println("Пока не знаю как переключиться на окно печати для взаимодействия с элементами");
                 break;
             case "firefox":
                 System.out.println("В FireFox нет возможности предпросмотра перед печатью");
@@ -180,6 +197,13 @@ public class DocumentEditPage {
     }
 
     public void checkEditions() {
-        Assert.assertTrue($$(byText("с изменениями, не вступившими в силу")).size() > 0);
+        int k = 0;
+        for (int i = 0; i < $(byClassName("editionsView")).$$(byAttribute("class", "text v")).size(); i++) {
+            if ($(byClassName("editionsView")).$$(byAttribute("class", "text v")).get(i).getText().contains("с изменениями, не вступившими в силу")) {
+                k++;
+            }
+        }
+        //System.out.println("k = "+k);
+        Assert.assertTrue(k > 0);
     }
 }

@@ -16,9 +16,9 @@ public class ThirdTest {
     public void testThirdTest() {
         DocumentEditPageSteps objDEPS = new DocumentEditPageSteps();
         objDEPS.focusOnSecondWindow();
-        objDEPS.switchToFrame1();
+        objDEPS.switchToFrame();
         objDEPS.waitUpdateAllPage();
-        objDEPS.checkTimeLess10Seconds();
+        objDEPS.checkTimeLessNSeconds();
         objDEPS.focusOnSecondWindow();
     }
 }

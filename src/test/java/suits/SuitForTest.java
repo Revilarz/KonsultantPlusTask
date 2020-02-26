@@ -13,7 +13,8 @@ import org.junit.runners.Suite;
         FifthTest.class,
         SixthText.class,
         SeventhTest.class,
-        EighthTest.class
+        EighthTest.class,
+        NinthTest.class
 })
 public class SuitForTest {
 

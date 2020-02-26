@@ -16,7 +16,7 @@ public class FourthTest {
     public void testFourthTest() {
         DocumentEditPageSteps objDEPS = new DocumentEditPageSteps();
         objDEPS.checkTextInTitle();
-        objDEPS.switchToFrame1();
+        objDEPS.switchToFrame();
         objDEPS.checkTextIsExist();
     }
 }

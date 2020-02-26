@@ -22,10 +22,10 @@ public class DocumentEditPageSteps {
         objDEP.waitUpdateAllPage();
     }
 
-    @Step("Проверка того что время страницы меньше 10сек")
-    public void checkTimeLess10Seconds() {
+    @Step("Проверка того что время загрузки  страницы меньше указанного в свойствах времени")
+    public void checkTimeLessNSeconds() {
         objDEP = new DocumentEditPage();
-        objDEP.checkTimeLess10Seconds();
+        objDEP.checkTimeLessNSeconds();
     }
 
     @Step("Проверка текста в названии вкладки")
@@ -41,9 +41,9 @@ public class DocumentEditPageSteps {
     }
 
     @Step("Переключение на фрэйм")
-    public void switchToFrame1() {
+    public void switchToFrame() {
         objDEP = new DocumentEditPage();
-        objDEP.switchToFrame1();
+        objDEP.switchToFrame();
     }
 
 
@@ -93,6 +93,18 @@ public class DocumentEditPageSteps {
     public void switchOnPrintWindow() {
         objDEP = new DocumentEditPage();
         objDEP.switchOnPrintWindow();
+    }
+
+    @Step("Нажатие на кнопку Редакции")
+    public void clickRedaction() {
+        objDEP = new DocumentEditPage();
+        objDEP.clickRedaction();
+    }
+
+    @Step("Проверка наличия редакций не вступивших в силу")
+    public void checkEditions() {
+        objDEP = new DocumentEditPage();
+        objDEP.checkEditions();
     }
 
 }
