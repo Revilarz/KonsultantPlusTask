@@ -64,30 +64,8 @@ public class DocumentEditPage {
     /**
      * без робота и считывания из буфера не знал как еще вытащить текст из Поисковой строки для сравнения
      */
-    public void checkTextInSearchBox() throws AWTException, IOException, UnsupportedFlavorException {
-        $(byId("dictFilter")).click();
-        Robot robot = new Robot();
-
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_A);
-
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_C);
-
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_C);
-
-        //залипала Ctrl
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-
-        Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        DataFlavor dataFlavor = DataFlavor.stringFlavor;
-        String text = "";
-        if (systemClipboard.isDataFlavorAvailable(dataFlavor)) {
-            text = (String) systemClipboard.getData(dataFlavor);
-        }
-        //System.out.println("Текст из буфера - "+text);
-        Assert.assertEquals(text, "нк ч2");
+    public void checkTextInSearchBox() {
+        Assert.assertEquals($(byId("dictFilter")).getAttribute("value"), "нк ч2");
     }
 
 
@@ -136,6 +114,7 @@ public class DocumentEditPage {
      * нажать на кнопку Найти
      */
     public void clickSearchButton() {
+        sleep(3000);
         $(byId("searchFindBtn")).click();
     }
 
@@ -193,7 +172,7 @@ public class DocumentEditPage {
         }
 
         sleep(3000);
-       close();
+        close();
     }
 
     public void clickRedaction() {

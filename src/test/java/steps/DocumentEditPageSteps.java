@@ -36,7 +36,7 @@ public class DocumentEditPageSteps {
     }
 
     @Step("Проверка наличия текста нк ч2  поисковой строке")
-    public void checkTextInSearchBox() throws AWTException, UnsupportedFlavorException, IOException {
+    public void checkTextInSearchBox() {
         objDEP = new DocumentEditPage();
         objDEP.checkTextInSearchBox();
     }

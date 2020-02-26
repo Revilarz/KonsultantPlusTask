@@ -19,7 +19,7 @@ public class FifthTest {
     @DisplayName("Проверка наличия текста нк ч2 в поисковой строке")//название
     @Flaky //нестабильный тест, может упать из-за того что в буфере что то есть (думаю при запуске в контейнере/удаленном серве проблема должна уйти)
     @Test
-    public void testFifthTest() throws AWTException, UnsupportedFlavorException, IOException {
+    public void testFifthTest() {
         DocumentEditPageSteps objDEPS = new DocumentEditPageSteps();
         objDEPS.focusOnSecondWindow();
         objDEPS.checkTextInSearchBox();
