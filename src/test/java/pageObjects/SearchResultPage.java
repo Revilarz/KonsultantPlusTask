@@ -1,6 +1,6 @@
-package PageObjects;
+package pageObjects;
 
-import Steps.BaseStep;
+import steps.BaseStep;
 
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.$;

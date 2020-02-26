@@ -1,6 +1,6 @@
-package Steps;
+package steps;
 
-import PageObjects.SearchResultPage;
+import pageObjects.SearchResultPage;
 import io.qameta.allure.Step;
 
 public class SearchResultsPageSteps {

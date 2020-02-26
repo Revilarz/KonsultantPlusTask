@@ -1,6 +1,6 @@
-package Tests;
+package tests;
 
-import Steps.BasePageSteps;
+import steps.BasePageSteps;
 import allure.AllureCategory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Story;
@@ -10,11 +10,10 @@ import org.junit.Test;
 @Epic(AllureCategory.BASE_PAGE)
 public class FirstTest {
 
-
-    @Story("первый тест")//типа папка
-    @DisplayName("Самый первый тест")//название
+    @Story("Первый тест")//типа папка
+    @DisplayName("Поиск документа по фразе нк ч2")//название
     @Test
-    public static void testFirstTest(){
+    public void testFirstTest(){
 
         BasePageSteps objBPS = new BasePageSteps();
         objBPS.openLink();

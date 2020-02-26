@@ -1,6 +1,6 @@
-package Steps;
+package steps;
 
-import PageObjects.BasePage;
+import pageObjects.BasePage;
 import io.qameta.allure.Step;
 
 public class BasePageSteps extends BaseStep {
