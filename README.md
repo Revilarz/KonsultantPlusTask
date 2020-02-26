@@ -40,7 +40,7 @@ test task from Konsultant Plus Co.
     - в атотестах используется кирилица, так что в pom-файл добавлены зависимости решающие этупроблему.
 2. Проблемы с которыми я столнулся были учтены и более подробно описаны в файле "Errors".
 ````
-##Доп. материалы.
+## Доп. материалы.
 ````
 - [настройка JDK и Maven](https://github.com/Flibberty-GEA/blog/wiki/03.a-%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-Maven-%D0%BD%D0%B0-Windows-10)
 - [настройка Allure](https://habr.com/ru/company/sberbank/blog/358836/)
