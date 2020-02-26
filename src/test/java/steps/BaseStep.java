@@ -26,6 +26,13 @@ public class BaseStep {
         return Integer.parseInt(dateFormat.format(date));
     }
 
+    @Step("Получение текущей даты в формате дд.мм.гггг")
+    public static String getDateMonthYear() {
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
     @Step("Получение текущих часов")
     public static int getHours() {
         DateFormat dateFormat = new SimpleDateFormat("HH");

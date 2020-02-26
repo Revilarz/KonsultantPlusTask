@@ -11,9 +11,16 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+import static steps.BaseStep.getDateMonthYear;
 
 public class DocumentEditPage {
 
@@ -170,18 +177,12 @@ public class DocumentEditPage {
      * нажатие на кнопку печати
      */
     public void clickPrint() {
-        switch (GetProperties.getPropertiesByText("browser")) {
-            case "chrome":
-                $(byClassName("print")).click();
-                break;
-        }
+        $(byClassName("print")).click();
     }
 
-    public void switchOnPrintWindow() {
+    public void switchOnPrintWindow() throws AWTException {
         switch (GetProperties.getPropertiesByText("browser")) {
             case "chrome":
-                switchTo().window(2);
-                $(byId("plugin")).doubleClick();
                 System.out.println("Пока не знаю как переключиться на окно печати для взаимодействия с элементами");
                 break;
             case "firefox":
@@ -190,6 +191,9 @@ public class DocumentEditPage {
             default:
                 System.out.println("Другие браузеры не рассматривались");
         }
+
+        sleep(3000);
+       close();
     }
 
     public void clickRedaction() {
@@ -205,5 +209,25 @@ public class DocumentEditPage {
         }
         //System.out.println("k = "+k);
         Assert.assertTrue(k > 0);
+    }
+
+
+    public void checkAndPrintDate() throws ParseException {
+        String dateInWeb = "";
+        for (int i = 0; i < $(byClassName("editionsView")).$$(byAttribute("class", "text v")).size(); i++) {
+            if ($(byClassName("editionsView")).$$(byAttribute("class", "text v")).get(i).getText().contains("с изменениями, не вступившими в силу")) {
+                //System.out.println($(byClassName("editionsView")).$$(byAttribute("class", "redDate")).get(i).getText());
+                Pattern p = Pattern.compile("(\\d{2}.\\d{2}.\\d{4})");
+                Matcher m = p.matcher($(byClassName("editionsView")).$$(byAttribute("class", "redDate")).get(i).getText());
+                while (m.find()) {
+                    dateInWeb = m.group(1);
+                }
+                SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+                Date date1 = formatter.parse(dateInWeb);
+                Date date2 = formatter.parse(getDateMonthYear());
+                System.out.println(formatter.format(date1) + " < " + formatter.format(date2));
+                Assert.assertTrue(date1.compareTo(date2) > 0);
+            }
+        }
     }
 }

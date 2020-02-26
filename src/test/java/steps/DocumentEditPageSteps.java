@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import java.awt.*;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class DocumentEditPageSteps {
     private DocumentEditPage objDEP = new DocumentEditPage();
@@ -90,7 +91,7 @@ public class DocumentEditPageSteps {
     }
 
     @Step("Переключение не окно печати")
-    public void switchOnPrintWindow() {
+    public void switchOnPrintWindow() throws AWTException {
         objDEP = new DocumentEditPage();
         objDEP.switchOnPrintWindow();
     }
@@ -105,6 +106,12 @@ public class DocumentEditPageSteps {
     public void checkEditions() {
         objDEP = new DocumentEditPage();
         objDEP.checkEditions();
+    }
+
+    @Step("Проверка дат")
+    public void checkAndPrintDate() throws ParseException {
+        objDEP = new DocumentEditPage();
+        objDEP.checkAndPrintDate();
     }
 
 }

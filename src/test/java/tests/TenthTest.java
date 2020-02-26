@@ -7,17 +7,15 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import steps.DocumentEditPageSteps;
 
-import java.awt.*;
+import java.text.ParseException;
 
 @Epic(AllureCategory.FILEEDIT_PAGE)
-public class EighthTest {
-
-    @Story("Восьмой тест")//типа папка
-    @DisplayName("Проверка корректнйо печати")//название
+public class TenthTest {
+    @Story("Десятый тест")//типа папка
+    @DisplayName("Проверка дат")//название
     @Test
-    public void testEighthTest() throws AWTException {
+    public void testTenthTest() throws ParseException {
         DocumentEditPageSteps objDEPS = new DocumentEditPageSteps();
-        objDEPS.switchOnPrintWindow();
-
+        objDEPS.checkAndPrintDate();
     }
 }

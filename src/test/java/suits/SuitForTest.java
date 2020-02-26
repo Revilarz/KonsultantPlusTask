@@ -14,7 +14,8 @@ import org.junit.runners.Suite;
         SixthText.class,
         SeventhTest.class,
         EighthTest.class,
-        NinthTest.class
+        NinthTest.class,
+        TenthTest.class
 })
 public class SuitForTest {
 
