@@ -18,9 +18,9 @@ test task from Konsultant Plus Co.
 ### Настройки перед запуском
 ````
 1.Скачать и утсановить IDE.
-2.Скачать и установить JDK11+. Добавить в переменные среды JAVA_HOME и прописать путь до папки bin в каталоге JDK.([подробнее](https://github.com/Flibberty-GEA/blog/wiki/03.a-%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-Maven-%D0%BD%D0%B0-Windows-10))
-3.Скачать и учтановить Maven. Добавить в переменные среды M2_HOME...([подробнее](https://github.com/Flibberty-GEA/blog/wiki/03.a-%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-Maven-%D0%BD%D0%B0-Windows-10))
-4.Скачать и учтановить Allure. Добавить в переменные среды ALLURE_HOME...([подробнее](https://habr.com/ru/company/sberbank/blog/358836/))
+2.Скачать и установить JDK11+. Добавить в переменные среды JAVA_HOME и прописать путь до папки bin в каталоге JDK.( [подробнее](https://github.com/Flibberty-GEA/blog/wiki/03.a-%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-Maven-%D0%BD%D0%B0-Windows-10) )
+3.Скачать и учтановить Maven. Добавить в переменные среды M2_HOME...( [подробнее](https://github.com/Flibberty-GEA/blog/wiki/03.a-%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-Maven-%D0%BD%D0%B0-Windows-10) )
+4.Скачать и учтановить Allure. Добавить в переменные среды ALLURE_HOME...( [подробнее](https://habr.com/ru/company/sberbank/blog/358836/) )
 5.Скачать и установить браузеры GoogleChrome и Firefox.
 6.Скачать данный проект архивом (если нет архиватора скачать и установить). Распаковать архив.
 7.Открыть IDE и выполнить импорт проекта.
