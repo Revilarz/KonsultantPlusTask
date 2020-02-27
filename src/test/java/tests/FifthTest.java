@@ -8,10 +8,6 @@ import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 
-import java.awt.*;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
-
 @Epic(AllureCategory.FILEEDIT_PAGE)
 public class FifthTest {
 

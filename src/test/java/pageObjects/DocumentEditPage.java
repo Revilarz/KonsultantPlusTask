@@ -1,5 +1,6 @@
 package pageObjects;
 
+import io.qameta.allure.Allure;
 import steps.BaseStep;
 import com.codeborne.selenide.Condition;
 import org.junit.Assert;
@@ -9,9 +10,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,6 +23,9 @@ import static steps.BaseStep.getDateMonthYear;
 
 public class DocumentEditPage {
 
+    /**
+     * переменная для хранения времени окончания загрузки страницы
+     */
     public static int finishTime;
 
 
@@ -33,7 +35,6 @@ public class DocumentEditPage {
     public void focusOnSecondWindow() {
         switchTo().window(1);
         switchTo().defaultContent();
-
     }
 
     /**
@@ -41,7 +42,6 @@ public class DocumentEditPage {
      */
     public void waitUpdateAllPage() {
         $(byText("НАЛОГОВЫЙ")).waitUntil(Condition.visible, 15000);
-        //$(byClassName("print")).waitUntil(Condition.appear, 20000);
         finishTime = BaseStep.getHours() * 360 + BaseStep.getMinutes() * 60 + BaseStep.getSeconds();
     }
 
@@ -125,10 +125,13 @@ public class DocumentEditPage {
         $(byId("segm1")).click();
     }
 
-    public String text1 = "";
+    /**
+     *переменная для хранения текста для дальнейшего сравнения
+     */
+    private static String text1 = "";
 
     /**
-     * выделяю текст (читерским способом) и сохраняю в переменную через буер для дальнейшего сравнения
+     * выделяю текст (читерским способом) и сохраняю в переменную через буфер для дальнейшего сравнения с тем что выводится в печать
      */
     public void selectText() throws IOException, UnsupportedFlavorException {
         $(byId("p1562")).dragAndDropTo($(byId("p1567")));
@@ -159,7 +162,10 @@ public class DocumentEditPage {
         $(byClassName("print")).click();
     }
 
-    public void switchOnPrintWindow() throws AWTException {
+    /**
+     * метод для взаимодействия с окном печати ... не реализован
+     */
+    public void switchOnPrintWindow() {
         switch (GetProperties.getPropertiesByText("browser")) {
             case "chrome":
                 System.out.println("Пока не знаю как переключиться на окно печати для взаимодействия с элементами");
@@ -175,10 +181,16 @@ public class DocumentEditPage {
         close();
     }
 
+    /**
+     * Нажатие на кнопку Редации
+     */
     public void clickRedaction() {
         $(byClassName("editions")).click();
     }
 
+    /**
+     * Проверка количества редакций с изменениями не вступившими в силу
+     */
     public void checkEditions() {
         int k = 0;
         for (int i = 0; i < $(byClassName("editionsView")).$$(byAttribute("class", "text v")).size(); i++) {
@@ -191,6 +203,9 @@ public class DocumentEditPage {
     }
 
 
+    /**
+     * Сравнение дат с текущей у документов с изменениями не вступившими в силу и вывод их в лог
+     */
     public void checkAndPrintDate() throws ParseException {
         String dateInWeb = "";
         for (int i = 0; i < $(byClassName("editionsView")).$$(byAttribute("class", "text v")).size(); i++) {
@@ -204,7 +219,8 @@ public class DocumentEditPage {
                 SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
                 Date date1 = formatter.parse(dateInWeb);
                 Date date2 = formatter.parse(getDateMonthYear());
-                System.out.println(formatter.format(date1) + " < " + formatter.format(date2));
+                //System.out.println(formatter.format(date1) + " < " + formatter.format(date2));
+                Allure.addAttachment("Дата начала действия редакций: ", formatter.format(date1));
                 Assert.assertTrue(date1.compareTo(date2) > 0);
             }
         }

@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.text.ParseException;
 
 public class DocumentEditPageSteps {
+
     private DocumentEditPage objDEP = new DocumentEditPage();
 
-    @Step("Фокусировка на второй вкладке")
+    @Step("Фокусировка на второй вкладке и дефолтном контенте")
     public void focusOnSecondWindow() {
         objDEP = new DocumentEditPage();
         objDEP.focusOnSecondWindow();
@@ -91,7 +92,7 @@ public class DocumentEditPageSteps {
     }
 
     @Step("Переключение не окно печати")
-    public void switchOnPrintWindow() throws AWTException {
+    public void switchOnPrintWindow() {
         objDEP = new DocumentEditPage();
         objDEP.switchOnPrintWindow();
     }
